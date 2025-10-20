@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/stylesheet/app.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function validatepass()
+{
+var npass = document.getElementById("npass").value;
+var npassagain = document.getElementById("npassagain").value;
+
+if(npass != npassagain)
+{
+alert("The both new password is not matches, please retype");
+return false;
+}
+else
+{
+return true;
+}
+
+
+}
+</script>				
+<title>Change Password</title>
+</head>
+<body>
+<cfoutput>
+
+<div class="mainTitle" style="text-transform:uppercase">Change Password</div>
+<font color="red" size="2.5"><cfif isdefined("form.status")><cfoutput>#form.status#</cfoutput></cfif></font>
+<cfform action="/housekeeping/maintainPasswordProcess.cfm" method="post" onsubmit="javascript:return validatepass();">
+<table class="form">
+<tr>
+<td width="100px">User ID:</td>
+<td>#HUserID#</td>
+</tr>
+<tr>
+<td>User Name:</td>
+<td>#HUserName#</td>
+</tr>
+</table>
+<br />
+<br />
+Please enter old password and also enter the new password twice
+<table>
+<tr>
+<td width="150px">Enter Old Password</td>
+<td width="300px"><cfinput name="opass" id="opass" type="password"/></td>
+</tr>
+<tr>
+<td width="150px">Enter New Password</td>
+<td width="300px">
+<input name="npass" id="npass" type="password" required
+title="Password must contain (UpperCase, LowerCase, Number/SpecialChar and min 8 Chars)"
+pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"  
+onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"  />
+</td>
+</tr>
+<tr>
+<td width="150px">Enter New Password Again</td>
+<td width="300px">
+<input name="npassagain" id="npassagain" type="password" required title="Password must contain (UpperCase, LowerCase, Number/SpecialChar and min 8 Chars)"  
+pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"  
+onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" />
+</td>
+</tr>
+</table>
+<br />
+<br />
+&nbsp;&nbsp;&nbsp;<cfinput type="submit" name="changepass" id="changepass" value="Save" size="6" > <!---style="visibility:hidden"---> 
+</cfform>
+</cfoutput>
+</body>
+</html>

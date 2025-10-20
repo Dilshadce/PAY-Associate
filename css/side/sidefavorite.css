@@ -1,0 +1,74 @@
+@charset "utf-8";
+/* CSS Document */
+/* Bottom Navigation */
+#backNavigation{	
+	width:218px;
+	height:95px;
+	background-position: -218px 0px;
+}
+#backNavigation:hover{	
+	width:218px;
+	height:95px;
+	background-position: -218px -95px;
+}
+/* Favorite Menu */
+button{
+	cursor:pointer;
+	color:transparent;
+	width:24px;
+	height:24px;
+	content:'';
+	border:none;
+	padding:0;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(/img/side/icons.png);
+}
+#back{
+	margin:9px 7.5px 9px 7.5px;
+	background-position: -312px 0px;
+}
+#add{
+	margin:9px 6.5px 9px 6.5px;	
+	background-position: -336px 0px;
+}
+.favoriteList ul{
+	margin:0;
+	padding:0;
+}
+.favoriteList li{
+	list-style: none;
+	margin:0;
+	vertical-align:middle;
+}
+.favoriteList li a{
+	display:block;
+	float:left;
+	width:167px;
+	color: #4FAF7A;
+	font: 15px Arial, Helvetica, sans-serif;
+	font-weight:100;
+	letter-spacing:0.025em;
+	text-decoration: none;
+	padding:10px 0px 10px 14px;
+}
+.favoriteList li:hover a{
+	color:#FFFFFF;
+}
+.favoriteList li .remove{
+	display:block;
+	float:left;
+	cursor:pointer;
+	width:24px;
+	height:24px;
+	margin:10px 0px 0px 0px;
+	background-repeat: no-repeat;
+	background-image: url(/img/side/icons.png);
+	background-position: -408px 0px;
+}
+.favoriteList li:hover .remove{
+	background-position: -408px -24px;
+}
+.addFavorite .select2-container{
+	margin:5px 5px 10px 5px;
+}

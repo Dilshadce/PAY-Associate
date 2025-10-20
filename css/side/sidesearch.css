@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+/* Bottom Navigation */
+#backNavigation{	
+	width:218px;
+	height:95px;
+	background-position: -218px 0px;
+}
+#backNavigation:hover{	
+	width:218px;
+	height:95px;
+	background-position: -218px -95px;
+}
+/* Make datepicker smaller */
+.ui-datepicker{
+	font-size:0.7em;
+}
+/* search menu */
+.textInput{
+	width:164px;
+	height:20px;
+	margin:12px 11px 12px 11px;
+	font-family:"Franklin Gothic Book";
+	font-size:15px;
+	color:#8F9599;
+	-moz-border-radius:18px 18px 18px 18px;
+	-webkit-border-radius:18px 18px 18px 18px;
+	border-radius:18px 18px 18px 18px;
+	padding-left:8px;
+	padding-right:20px;
+	background-repeat:no-repeat;
+	background-image:url(/img/side/search_icon.png);
+	background-position:173px 4.5px;
+}
+.selectInput{
+	width:190px;
+	height:26px;
+	margin:5px 14px 5px 14px;
+	padding:1px;
+	font-family:"Franklin Gothic Book";
+	font-size:15px;
+	color:#8F9599;
+}
+.criteriaDiv{
+	float:left;
+	margin-top:10px;
+}

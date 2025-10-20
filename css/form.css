@@ -1,0 +1,277 @@
+@charset "utf-8";
+/* CSS Document */
+.container{
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+.formContainer{
+	min-width:380px;
+	display:inline-block;
+	margin:0px auto;
+	margin-top:25px;
+	margin-bottom:25px;
+	background:#F2F2F2;	
+	-moz-box-shadow:0px 3px 12px #CCCCCC;
+    -webkit-box-shadow:0px 3px 12px #CCCCCC;
+    box-shadow:0px 3px 12px #CCCCCC;
+	behavior: url(/css/pie/PIE.htc);
+}
+.formTitleDiv,
+.formContainer>div:first-of-type{
+	height:28px;
+	padding:11px 20px 11px 20px;
+	background:#4FAF7A;
+	text-align:center;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:28px;
+	letter-spacing:0.05em;
+	color:#FFFFFF;
+}
+.formTableDiv,
+.formContainer div:nth-of-type(2){
+	padding:20px 20px 0px 20px;
+}
+.formTable,
+.formContainer div:nth-of-type(2) table{
+	border-collapse:collapse;
+	margin:0 auto;
+}
+.formLabelColumn,
+.formContainer div:nth-of-type(2) th{
+	font-weight:normal;
+	text-align:right;
+	padding-right:16px;
+	padding-bottom:15px;
+}
+.formLabel,
+.formContainer div:nth-of-type(2) label{
+	height:16px;
+	font-family:"Franklin Gothic Book";
+	font-size:16px;
+	color:#666666;
+}
+.formInputColumn,
+.formContainer div:nth-of-type(2) td{
+	text-align:left;
+	padding-left:16px;
+	padding-bottom:15px;
+}
+.formInput,
+.formContainer div:nth-of-type(2) td>input,
+.formContainer div:nth-of-type(2) td>select,
+.formContainer div:nth-of-type(2) td>span,
+.formContainer div:nth-of-type(2) td>div{
+	margin:0px 4px 0px 4px;
+}
+.formInput,
+.formContainer div:nth-of-type(2) td>input,
+.formContainer div:nth-of-type(2) td>select,
+.formContainer div:nth-of-type(2) td span>select,
+.formContainer div:nth-of-type(2) td>div{
+	padding:5.5px;
+	width:200px;
+	font-family:"Franklin Gothic Book";
+	font-size:12px;
+	color:#737373;
+}
+.formInput[type='text'],
+.formContainer div:nth-of-type(2) td>input{
+	width:187px;
+}
+div.formInput,
+.formContainer div:nth-of-type(2) td>div{
+	box-sizing:border-box;
+	display:inline-block;
+	white-space:nowrap;
+	width:200px;
+	min-width:200px;
+}
+div.formInput.select2-container,
+.formContainer div:nth-of-type(2) td>div.select2-container{
+	padding:0;
+}
+.formInput[type='text'],select.formInput,
+.formContainer div:nth-of-type(2) td>input[type='text'],
+.formContainer div:nth-of-type(2) td>select,
+.formContainer div:nth-of-type(2) td span>select{
+	border:1px solid #B2B2B2;
+}
+.formInput[type='text'],
+.formContainer div:nth-of-type(2) td>input[type='text']{
+	height:18px;
+}
+.formInput[type='text']:focus,select.formInput:focus,
+.formContainer div:nth-of-type(2) td>input[type='text']:focus,
+.formContainer div:nth-of-type(2) td>select:focus,
+.formContainer div:nth-of-type(2) td span>select:focus{
+	outline:none;
+	border:1px solid #4FAF7A;
+}
+.formInput:first-of-type,
+.formContainer div:nth-of-type(2) td>input:first-of-type,
+.formContainer div:nth-of-type(2) td>select:first-of-type,
+.formContainer div:nth-of-type(2) td>span:first-of-type,
+.formContainer div:nth-of-type(2) td>div:first-of-type{
+	margin-left:0px;
+}
+.formInput:last-of-type,
+.formContainer div:nth-of-type(2) td>input:last-of-type,
+.formContainer div:nth-of-type(2) td>select:last-of-type,
+.formContainer div:nth-of-type(2) td>span:last-of-type,
+.formContainer div:nth-of-type(2) td>div:last-of-type{
+	margin-right:0px;
+}
+.formButtonDiv,
+.formContainer>div:last-of-type{
+	padding:5px 20px 20px 20px;
+	white-space:nowrap;
+}
+.formButton,
+.formContainer>div:last-of-type input[type='submit'],
+.formContainer>div:last-of-type input[type='reset'],
+.formContainer>div:last-of-type input[type='button']{
+	height:30px;
+	background:#93989F;
+	border:0;
+	font-family:"Franklin Gothic Medium";
+	font-size:18px;
+	color:#FFFFFF;
+}
+input.form1Button,
+.form1Button>div:last-of-type input[type='submit'],
+.form1Button>div:last-of-type input[type='reset'],
+.form1Button>div:last-of-type input[type='button']{
+	width:100%;
+}
+input.form2Button,
+.form2Button>div:last-of-type input[type='submit'],
+.form2Button>div:last-of-type input[type='reset'],
+.form2Button>div:last-of-type input[type='button']{
+	width:47%;
+	margin:0% 2.5% 0% 2.5%;
+}
+input.form2Button:first-of-type,
+.form2Button>div:last-of-type input[type='submit']:first-of-type,
+.form2Button>div:last-of-type input[type='reset']:first-of-type,
+.form2Button>div:last-of-type input[type='button']:first-of-type{
+	margin-left:0px;
+}
+input.form2Button:last-of-type,
+.form2Button>div:last-of-type input[type='submit']:last-of-type,
+.form2Button>div:last-of-type input[type='reset']:last-of-type,
+.form2Button>div:last-of-type input[type='button']:last-of-type{
+	margin-right:0px;
+}
+input.form3Button,
+.form3Button>div:last-of-type input[type='submit'],
+.form3Button>div:last-of-type input[type='reset'],
+.form3Button>div:last-of-type input[type='button']{
+	width:29.25%;
+	margin:0% 2.5% 0% 2.5%;
+}
+input.form3Button:first-of-type,
+.form3Button>div:last-of-type input[type='submit']:first-of-type,
+.form3Button>div:last-of-type input[type='reset']:first-of-type,
+.form3Button>div:last-of-type input[type='button']:first-of-type{
+	margin-left:0px;
+}
+input.form3Button:last-of-type,
+.form3Button>div:last-of-type input[type='submit']:last-of-type,
+.form3Button>div:last-of-type input[type='reset']:last-of-type,
+.form3Button>div:last-of-type input[type='button']:last-of-type{
+	margin-right:0px;
+}
+input.form4Button,
+.form4Button>div:last-of-type input[type='submit'],
+.form4Button>div:last-of-type input[type='reset'],
+.form4Button>div:last-of-type input[type='button']{
+	width:20.5%;
+	margin:0% 2.5% 0% 2.5%;
+}
+input.form4Button:first-of-type,
+.form4Button>div:last-of-type input[type='submit']:first-of-type,
+.form4Button>div:last-of-type input[type='reset']:first-of-type,
+.form4Button>div:last-of-type input[type='button']:first-of-type{
+	margin-left:0px;
+}
+input.form4Button:last-of-type,
+.form4Button>div:last-of-type input[type='submit']:last-of-type,
+.form4Button>div:last-of-type input[type='reset']:last-of-type,
+.form4Button>div:last-of-type input[type='button']:last-of-type{
+	margin-right:0px;
+}
+input.form5Button,
+.form5Button>div:last-of-type input[type='submit'],
+.form5Button>div:last-of-type input[type='reset'],
+.form5Button>div:last-of-type input[type='button']{
+	width:15%;
+	margin:0% 2.5% 0% 2.5%;
+}
+input.form5Button:first-of-type,
+.form5Button>div:last-of-type input[type='submit']:first-of-type,
+.form5Button>div:last-of-type input[type='reset']:first-of-type,
+.form5Button>div:last-of-type input[type='button']:first-of-type{
+	margin-left:0px;
+}
+input.form5Button:last-of-type,
+.form5Button>div:last-of-type input[type='submit']:last-of-type,
+.form5Button>div:last-of-type input[type='reset']:last-of-type,
+.form5Button>div:last-of-type input[type='button']:last-of-type{
+	margin-right:0px;
+}
+
+/* select2 styles */
+.bigdrop{
+	width:400px;
+	min-width:200px;
+	text-align:left;
+}
+.select2-drop{	
+	font-family:"Franklin Gothic Book";
+	font-size:12px;
+	color:#737373;
+	border-radius:0 !important;
+}
+.select2-container .select2-choice{
+	border-radius:0;
+	color:#737373 !important;
+}
+.select2-drop-active {
+    border: 1px solid #4FAF7A;
+    border-top: none;
+}
+.select2-drop.select2-drop-above.select2-drop-active {
+    border-top: 1px solid #4FAF7A;
+}
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+    border: 1px solid #4FAF7A;
+    outline: none;
+
+    -webkit-box-shadow:none;
+            box-shadow:none;
+}
+.select2-dropdown-open.select2-drop-above .select2-choice,
+.select2-dropdown-open.select2-drop-above .select2-choices {
+    border: 1px solid #4FAF7A;
+    border-top-color: transparent;
+
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(0.5, #eee));
+    background-image: -webkit-linear-gradient(center top, #fff 0%, #eee 50%);
+    background-image: -moz-linear-gradient(center top, #fff 0%, #eee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
+    background-image: linear-gradient(bottom, #fff 0%, #eee 50%);
+}
+.select2-container-multi.select2-container-active .select2-choices {
+    border: 1px solid #4FAF7A;
+    outline: none;
+
+    -webkit-box-shadow:none;
+            box-shadow:none;
+}
+
+/* jquery ui datepicker */
+.ui-datepicker{
+	font-size:0.7em;
+}

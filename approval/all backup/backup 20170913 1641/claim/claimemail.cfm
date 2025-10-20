@@ -1,0 +1,125 @@
+<cfquery name="default_mail_qry" datasource="payroll_main">
+    SELECT notif_email, default_email, emailserver, emailaccount, emailpassword, emailport, ELEAVEEMAIL,  	 
+    ELEAVEAPEMAIL, myear, emailsecure FROM gsetup WHERE comp_id = "#HcomID#"
+</cfquery>
+
+    <cfif #default_mail_qry.notif_email# neq "" and #default_mail_qry.default_email# eq "Y">
+        <cfset emailAddress = "#default_mail_qry.notif_email#">	
+    <cfelse> 	
+        <cfset emailAddress = "noreply@mynetiquette.com">	
+    </cfif>	
+    
+    <cfif default_mail_qry.emailserver eq "">
+        <cfset emailserver = "smtpcorp.com">
+        <cfset emailaccount = "noreply@mynetiquette.com">
+        <cfset emailpassword = "Netiquette168">
+        <cfset emailport = "2525">
+        <cfset emailssl = "no">
+        <cfset emailtls = "no">
+    <cfelse>
+        <cfset emailserver = default_mail_qry.emailserver>
+        <cfset emailaccount = default_mail_qry.emailaccount>
+        <cfset emailpassword = default_mail_qry.emailpassword>
+        <cfset emailport = default_mail_qry.emailport>
+        <cfif default_mail_qry.emailsecure neq "">
+            <cfif default_mail_qry.emailsecure eq "ssl">
+                <cfset emailssl = "yes">
+                <cfset emailtls = "no">
+            <cfelseif default_mail_qry.emailsecure eq "tls">
+                <cfset emailssl = "no">
+                <cfset emailtls = "yes">
+            </cfif>
+        <cfelse>
+            <cfset emailssl = "no">
+            <cfset emailtls = "no">
+        </cfif>
+ 	</cfif>
+   
+<cfloop query="getupdate">
+<cfset ccEmailList = ""> 
+<cfif company_details.claimreceived eq 'everyone'>
+    <cfquery name="select_email_cc" datasource="#dts#">
+		SELECT email, empno, companyid FROM emp_users 
+		WHERE empno = '#getupdate.empno#'
+        UNION ALL
+        SELECT useremail as email,entryid,usercmpid FROM payroll_main.users WHERE
+        usercmpid="#HcomID#" and getmail ="Y"
+    </cfquery>
+    
+    <cfset subject = "Claim Approval Notification">
+    
+    <cfloop query="select_email_cc">
+    	<cfif findnocase(select_email_cc.email, ccemaillist) eq 0>
+	        <cfset ccEmailList = ccEmailList & select_email_cc.email & ";" >
+		</cfif>
+    </cfloop>
+    
+<cfelseif company_details.claimreceived eq 'deptonly'>
+    <cfquery name="select_dept" datasource="#dts#">
+        SELECT empno,name,deptcode FROM pmast WHERE PAYSTATUS="A" AND (dresign = "0000-00-00") 
+        AND empno='#getupdate.empno#'
+    </cfquery>
+    
+    <cfquery name="getheaddept" datasource="#dts#">
+        SELECT headdept,deptdesp FROM dept WHERE deptcode = <cfqueryparam cfsqltype="cf_sql_varchar"
+        value = "#select_dept.deptcode#">
+    </cfquery>
+
+    <cfquery name="select_email_cc" datasource="#dts#">
+		SELECT email, empno, companyid FROM emp_users 
+		WHERE empno = '#getupdate.empno#'
+        UNION ALL
+        SELECT useremail as email,entryid,usercmpid 
+        FROM payroll_main.users 
+        where entryid = <cfqueryparam cfsqltype="cf_sql_varchar" value="#getheaddept.headdept#"> 
+        and usercmpid="#HcomID#" and getmail ="Y";
+    </cfquery>
+    
+    <cfset subject = "Claim Approval For " & #getupdate.name# & " - Department : " & #getheaddept.deptdesp#>
+
+    <cfloop query="select_email_cc">
+    	<cfif findnocase(select_email_cc.email, ccemaillist) eq 0>
+	        <cfset ccEmailList = ccEmailList & select_email_cc.email & ";" >
+		</cfif>
+    </cfloop>
+</cfif>
+
+<cfif ccemaillist neq "">
+	<cfmail from="#emailAddress#" 
+            to="#ccEmailList#"
+            subject="#subject#"
+            type="html" server="#emailserver#"
+            username="#emailaccount#"
+            password="#emailpassword#"
+            port="#emailport#"
+            usessl="#emailssl#" 
+            usetls="#emailtls#">
+                
+		<p>Dear #reReplace(getupdate.name,"(^[a-z]|\s+[a-z])","\U\1","ALL")#,</p>
+		<p>To be inform that your claim(s) have been processed.</p>
+		<p>Details as below: </p>
+            <table border ="1">
+			<tr>
+            <td width="150" align="center">Claim Description</td>
+            <td width="100" align="center">Claim Amount</td>
+            <td width="200" align="center">Management Remarks </td>
+            <td width="80" align="center">Status</td>
+            <td width="120" align="center">Updated On</td>
+            </tr>
+                <cfoutput>
+                    <tr>
+                    <td align="center">#getupdate.claimdes#</td>
+                    <td align="right">#numberformat(getupdate.claimamount,'.__')#</td>
+                    <td align="left">#getupdate.mgmtremarks#</td>
+                    <td align="center"><cfif getupdate.status eq "reject">Rejected<cfelse>#getupdate.status#</cfif></td>
+                    <td align="center">#getupdate.updatedon#</td>
+                    </tr>
+                </cfoutput>
+        </table>
+		<br />
+		From: Netiquette Payroll System<br />
+		Company ID: #HComID#
+		<p style="font-size:smaller">This email is auto generated by system. Please do not reply to this email.</p>
+    </cfmail>
+</cfif> 
+</cfloop>

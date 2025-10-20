@@ -1,0 +1,109 @@
+<cfcomponent>
+    <cffunction name="listAccount" access="remote" returntype="struct"> 
+        
+        <cfset targetTable=form.targetTable>
+        <cfset cancelrequest="N">
+            
+        <cfif "#tstatus#" EQ "Submitted For Cancellation">
+            <cfset form.tstatus = "Approved">    
+            <cfset cancelrequest = "Y">  
+        <cfelseif "#tstatus#" EQ "Submitted For Approval">
+            <cfset form.tstatus = "In Progress">    
+            <cfset cancelrequest = "N">
+        </cfif>
+            
+        <cfset sLimit="">
+        <cfif IsDefined("form.iDisplayStart") AND form.iDisplayLength NEQ "-1">
+            <cfset sLimit="LIMIT "&form.iDisplayStart&","&form.iDisplayLength>
+        </cfif>		
+        
+        <cfset sOrder="">
+        <cfif IsDefined("form.iSortCol_0")>
+            <cfset sOrder="ORDER BY `">
+            <cfloop from="0" to="#form.iSortingCols-1#" index="i" step="1">
+                <cfif Evaluate('form.bSortable_'&Evaluate('form.iSortCol_'&i)) EQ "true">
+                    <cfset sOrder=sOrder&Evaluate('form.mDataProp_'&Evaluate('form.iSortCol_'&i))>
+                        <cfif Evaluate('form.sSortDir_'&i) EQ "asc">
+                            <cfset sOrder=sOrder&"` ASC,`">
+                        <cfelse>
+                            <cfset sOrder=sOrder&"` DESC,`">
+                        </cfif>
+                </cfif>
+            </cfloop>
+            <cfset sOrder=Left(sOrder,Len(sOrder)-2)>
+            <cfif sOrder EQ "ORDER BY `">
+                <cfset sOrder="">
+            </cfif>  
+        </cfif>
+                
+        <cfset sWhere="">
+        <cfif IsDefined("form.sSearch") AND form.sSearch NEQ "">
+            <cfset sWhere=" WHERE (">
+            <cfloop from="0" to="#form.iColumns-1#" index="i" step="1">	
+                <cfif Evaluate('form.bSearchable_'&i) EQ "true">
+                    <cfset sWhere=sWhere&'aa.'&Evaluate('form.mDataProp_'&i)&" LIKE ""%"&form.sSearch&"%"" OR ">
+                </cfif>
+            </cfloop>
+            <cfset sWhere=Left(sWhere,Len(sWhere)-4)>
+            <cfset sWhere=sWhere&")">
+        </cfif>
+            
+        <cfquery name="getFilteredDataSet" datasource="#dts#">
+            SELECT SQL_CALC_FOUND_ROWS *
+            FROM 
+            (
+                SELECT a.id, a.placementno, b.empname, a.startdate, a.enddate, a.days, a.leavetype, a.startampm, a.endampm, a.status, a.submit_date, a.remarks,
+                a.signdoc, b.empno, a.cancel_req
+                FROM #targetTable# a
+                LEFT JOIN placement b ON a.placementno = b.placementno
+                WHERE 1=1
+                AND b.hrmgr = "#form.huserid#"
+                AND a.status = "#form.tstatus#"
+                AND a.cancel_req = "#cancelrequest#"
+            ) AS aa
+            
+            #sWhere#
+            #sOrder#
+            #sLimit#
+        </cfquery>
+    
+        <cfquery name="getFilteredDataSetLength" datasource="#dts#">
+            SELECT FOUND_ROWS() AS iFilteredTotal
+        </cfquery>
+        <cfquery name="getTotalDataSetLength" dbtype="query">
+            SELECT COUNT(placementno) AS iTotal
+            FROM getFilteredDataSet
+        </cfquery>      
+    
+		<cfset aaData=ArrayNew(1)>
+        <cfloop query="getFilteredDataSet">	
+            <cfset data=StructNew()>
+            <cfset data["CurrentRow"]=CurrentRow>
+			<cfset data["id"]=id>
+			<cfset data["placementno"]='200148022'>
+			<cfset data["empname"]=empname>
+			<cfset data["startdate"]=#DateFormat(startdate, 'yyyy-mm-dd')#>
+			<cfset data["enddate"]=#DateFormat(enddate, 'yyyy-mm-dd')#>
+			<cfset data["days"]=days>
+			<cfset data["leavetype"]=leavetype>
+			<cfset data["startampm"]=#TimeFormat(startampm)#>
+			<cfset data["endampm"]=#TimeFormat(endampm)#>
+			<cfset data["status"]=status>
+			<cfset data["submit_date"]=#DateFormat(submit_date, 'yyyy-mm-dd')#>
+			<cfset data["remarks"]=remarks>
+            <cfif #signdoc# NEQ "" AND FileExists(ExpandPath("/upload/#Replace(dts, '_i', '_p')#/leave/#empno#/#placementno#/#signdoc#")) >
+                <cfset data["signdoc"]="/upload/#Replace(dts, '_i', '_p')#/leave/#empno#/#placementno#/#signdoc#">
+            <cfelse>
+                <cfset data["signdoc"]="">
+            </cfif>
+            <cfset ArrayAppend(aaData,data)>
+        </cfloop>
+        
+        <cfset output=StructNew()>
+        <cfset output["sEcho"]=form.sEcho>
+        <cfset output["iTotalRecords"]=getTotalDataSetLength.iTotal>
+        <cfset output["iTotalDisplayRecords"]=getFilteredDataSetLength.iFilteredTotal>
+        <cfset output["aaData"]=aaData>
+        <cfreturn output>
+    </cffunction>
+</cfcomponent>

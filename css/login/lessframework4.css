@@ -1,0 +1,70 @@
+
+
+
+/*		Default Layout: 992px. 
+		Gutters: 24px.
+		Outer margins: 48px.
+		Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+.main_body h2{margin-left:-20px}
+.header_area {
+	
+}
+
+
+
+/*		Tablet Layout: 768px.
+		Gutters: 24px.
+		Outer margins: 28px.
+		Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+#secured {  margin-left: 215px;}
+.footer {  margin-left: 225px;}
+.main_body_area { min-height: 985px;}
+
+}
+
+
+
+/*		Mobile Layout: 320px.
+		Gutters: 24px.
+		Outer margins: 34px.
+		Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+.main_body p {font-family: Segoe UI;font-size: 13px;margin-left: 2px;}
+.form_heading img {  padding: 10px 5px;}
+input[type="text"], input[type="password"], input[type="email"], textarea {  border: 1px solid #CCCCCC;  margin-bottom: 20px;  padding: 10px;  width: 294px;}
+.sign {  margin-left: 60px;  width: 150px;}
+#sign a { color: #C67FD8;font-size: 15px;font-weight: bold;}
+.footer {  margin-left: 5px;  margin-top: 80px;}
+#user a {  font-size: 15px;}
+#secured {  margin-left: 5px;  margin-top: 10px;}
+.right {  margin-top: 25px;}
+.main_body_area { min-height: 920px;}
+}
+
+
+
+/*		Wide Mobile Layout: 480px.
+		Gutters: 24px.
+		Outer margins: 22px.
+		Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.footer {  margin-left: 55px;  margin-top: 80px;}
+.main_body_area {min-height: 915px;}
+#secured {  margin-left: 85px;  margin-top: 10px;}
+}

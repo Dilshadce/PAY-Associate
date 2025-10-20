@@ -1,0 +1,30 @@
+@media screen and (min-width:1px) and (max-width:1000px){
+	.apps {
+		width:100px !important;
+		height:30px !important;
+	}
+	#img1 {
+		left:20px !important;
+		bottom: 20px !important;		
+	}
+	#img2 {
+		left:10px !important;	
+		bottom: 20px !important;	
+	}
+
+}
+
+@media screen and (min-width:1001px) and (max-width:9999px){
+	.apps {
+		width:150px !important;
+		height:45px !important;	
+	}
+	#img1 {
+		left:40px !important;	
+		bottom: 20px !important;	
+	}
+	#img2 {
+		left:200px !important;	
+		bottom: 20px !important;	
+	}
+}

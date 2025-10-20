@@ -1,0 +1,18 @@
+BODY {
+	FONT-FAMILY: Arial; BACKGROUND-COLOR: #eff8ff
+}
+LI {
+	FONT-SIZE: 9px
+}
+A.main {
+	
+}
+A.sub {
+	COLOR: #0000ff
+}
+DIV.menutitle {
+	BORDER-RIGHT: #ffffff 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #ffffff 1px solid; PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 11px; MARGIN-BOTTOM: 5px; PADDING-BOTTOM: 2px; BORDER-LEFT: #ffffff 1px solid; WIDTH: 120px; CURSOR: hand; COLOR: #ffffff; PADDING-TOP: 2px; BORDER-BOTTOM: #ffffff 1px solid; FONT-FAMILY: Tahoma, Arial, Times New Roman; BACKGROUND-COLOR: #999999; TEXT-ALIGN: center
+}
+SPAN.submenu {
+	LIST-STYLE-IMAGE: url(../foldoutmenu2_arrow.gif); MARGIN-BOTTOM: 0.5em
+}

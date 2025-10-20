@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+/* Bottom Navigation */
+.bottomNavigationDiv{
+	position:fixed;
+	left:0;
+	bottom:0;
+}
+.bottomNavigationDiv span{
+	float:left;
+	content:'';
+	width:109px;
+	height:95px;
+	margin:0;
+	background-color:transparent;
+	background-repeat:no-repeat;
+	background-image:url(/latest/img/side/menu_nav_icons.png);
+}
+/* Side Menu */
+body {
+	width: 218px;
+	margin: 0;
+	background: #cacbce;
+}
+#logo_div {
+	height: 65px;
+	text-align: center;
+}
+#logo_div img{
+	margin-top:13px;
+}
+.section {
+	width: 218px;
+	float: left;
+	margin: 3px 0px 0px 0px;	
+	-webkit-box-shadow: 0 -8px 6px -6px #313C45;
+	   -moz-box-shadow: 0 -8px 6px -6px #313C45;
+	        box-shadow: 0 -8px 6px -6px #313C45;
+	behavior: url(/latest/css/pie/PIE.htc);
+}

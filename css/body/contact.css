@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+.rightBar .row {
+	border-top: #C67FD8 2px solid;
+}
+#wrapper {
+	position: relative;
+}
+.pin,.pin>div {
+	display: none;
+}
+
+.popover {
+	background:rgba(0,0,0,0.5);
+}
+.popover h4,.popover p{
+	color:#FFFFFF;
+}
+.popover.top .arrow:after {
+	border-top-color:rgba(0,0,0,0.5);
+}
+.popover.right .arrow:after {
+	border-right-color:rgba(0,0,0,0.5);
+}
+.popover.bottom .arrow:after {
+	border-bottom-color:rgba(0,0,0,0.5);
+}
+.popover.left .arrow:after {
+	border-left-color:rgba(0,0,0,0.5);
+}
+.linkIconDiv{
+	height:120px;
+	width:50px;
+	position:relative;
+}
+.linkIcon{
+	position:relative;
+	float:left;
+	margin:0;
+	padding:0;
+	content:'';
+	width:50px;
+	height:40px;
+	background-repeat:no-repeat;	
+	background-image: url(/img/body/linkIcon.png);
+	background-position:0px 0px;
+}
+.email{
+	background-position: 0px 0px;
+}
+.email:hover, .email:target, .email:active {
+	background-position: 0px -40px;
+}
+.skype{
+	background-position: -50px 0px;
+}
+.skype:hover, .skype:target, .skype:active {
+	background-position: -50px -40px;
+}
+.website{
+	background-position: -100px 0px;
+}
+.website:hover, .website:target, .website:active {
+	background-position: -100px -40px;
+}
+.skype{
+	border-bottom:1px rgba(255,255,255,0.5) solid;
+	border-top:1px rgba(255,255,255,0.5) solid;
+}

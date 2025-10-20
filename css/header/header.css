@@ -1,0 +1,97 @@
+@charset "utf-8";
+/* CSS Document */
+/* Notification */
+
+
+.item{
+    position:relative;
+    /*background-color:#f0f0f0;*/
+    float:right;
+    width:60px;
+    margin:0px 0px;
+    height:60px;
+    /*border:1px solid #ddd;*/
+    /*-moz-border-radius:30px;
+    -webkit-border-radius:30px;
+    border-radius:30px;*/
+    /*-moz-box-shadow:1px 1px 3px #555;
+    -webkit-box-shadow:1px 1px 3px #555;
+    box-shadow:1px 1px 3px #555;*/
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.home, .contact, .support, .logout{
+	position:absolute;
+    left:0;
+    top:0;
+	content:'';
+	width:60px;
+	height:60px;
+	margin:0;
+	background-repeat:no-repeat;	
+	background-image: url(/img/header/pmsheader.png);
+	background-position:0px 0px;
+}
+.home {
+	background-position: 0px 0px;
+}
+.home:hover, .home:target, .home:active {
+	background-position: 0px -60px;
+}
+.contact {
+	background-position: -60px 0px;
+}
+.contact:hover, .contact:target, .contact:active {
+	background-position: -60px -60px;
+}
+.support {
+	background-position: -180px 0px;
+}
+.support:hover, .support:target, .support:active {
+	background-position: -180px -60px;
+}
+.logout {
+	background-position: -120px 0px;
+}
+.logout:hover, .logout:target, .logout:active {
+	background-position: -120px -60px;
+}
+.item_content{
+    position:absolute;
+    height:34px;
+	max-width:200px;
+	white-space:nowrap;
+    overflow:hidden;
+    left:57px;
+    top:12px;
+    background:transparent;
+    display:none;
+	color: #454E59;
+	border:1px solid #A6A6A6;
+	/*border-radius:0px 10px 10px 0px;*/
+	padding:1px 3px 1px 3px;
+}
+.item_content .company_name{
+    background-color:transparent;
+	font-family:"Franklin Gothic Book";
+	font-size:13px;
+}
+.item_content .company_id {
+    background-color:transparent;
+	font-family:"Franklin Gothic Book";
+	font-size:12px;
+}
+.lastLoginInfo{
+	position:absolute;
+	top:2px;
+	left:8px;
+	font-family:"Franklin Gothic Book";
+	font-size:11px;
+	color:#808080;
+	z-index:99;
+}
+.company{
+	border:1px solid #A6A6A6;
+	/*border-radius:10px 10px 10px 10px;*/
+}

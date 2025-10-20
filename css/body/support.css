@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+.attachment{
+	height:40px;
+	border:3px dashed #CCCCCC;
+}
+#remoteAssistanceDiv{
+	border-left:1px solid #A6A6A6;
+	border-right:1px solid #A6A6A6;
+}
+.btmSubTitle{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	word-spacing:0.025px;
+	color:#93989F;
+}
+.btmSubContent{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	word-spacing:0.025px;
+	color:#807D80;
+}
